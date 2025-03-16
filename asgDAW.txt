@@ -1,0 +1,9 @@
+DAW despliegue de aplicaciones web 3h
+DIW diseño de interfaces web 6h
+DWES desarrollo web entorno servidor 8h
+HLC horas libre configuración 3h
+DWEC desarrollo web entorno cliente 6h
+
+
+proyecto juntando hlc y dwec con springboot y angular
+
