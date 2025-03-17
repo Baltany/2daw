@@ -66,3 +66,22 @@ el navegador los bordes de la tabla. -->
 
 
 
+<!-- De tres números A, B y C mostrar el valor  máximo -->
+<?php
+    function esMayor($a,$b,$c){
+        if($a>$b && $a>$c){
+            return $a;
+        }else if($b>$c && $b>$a){
+            return $b;
+    }
+    else{
+        return $c;
+    }
+}
+
+$a = 10;
+$b = 20;
+$c = 15;
+
+echo "El número mayor es: " . esMayor($a, $b, $c);
+?>
