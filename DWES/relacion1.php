@@ -85,3 +85,41 @@ $c = 15;
 
 echo "El número mayor es: " . esMayor($a, $b, $c);
 ?>
+
+
+<!-- Elabora un script que permita construir una tabla de 5 filas y 7 columnas que 
+contengan los sucesivos números naturales desde 1 hasta 35. Utiliza bucles del 
+tipo for, que igual que while y do while permiten ser anidados. -->
+<?php
+echo "<table border='1' style='border-collapse: collapse;'>";
+
+for($i=0; $i<5; $i++){
+    echo "<tr>";
+    for($j=0; $j<7; $j++){
+        echo "<td>". ($i*7 + $j + 1). "</td>";
+    }
+    echo "</tr>";
+    
+}
+
+echo "</table>";
+?>
+
+<!-- Repite el ejercicio anterior usando while y do while. -->
+<?php
+echo "<table border='1' style='border-collapse: collapse;'>";
+
+$i = 0;
+while($i<5){
+    echo "<tr>";
+    $j = 0;
+    while($j<7){
+        echo "<td>". ($i*7 + $j + 1). "</td>";
+        $j++;
+    }
+    echo "</tr>";
+    $i++;
+    
+}
+?>
+
