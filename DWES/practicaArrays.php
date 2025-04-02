@@ -99,3 +99,19 @@ foreach($productos as $i=>$valor){
     echo "Producto " . ($i + 1) . " Nombre: " . $valor["nombre"] . ", Precio: " . $valor["precio"] . "€ y la cantidad es: ". $valor["cantidad"] . "<br>";
 }
 ?>
+
+
+<!-- Ejercicio 6: Funciones de Arrays 
+• Objetivo: Practicar el uso de funciones integradas para manipular arrays. 
+• Descripción: 
+1. Crea un array llamado $nombres con los valores "Ana", "Luis", "Carlos", 
+"Maria". 
+2. Usa la función array_reverse() para mostrar los nombres en orden 
+inverso. 
+3. Usa la función in_array() para comprobar si "Carlos" está en el array. 
+4. Usa la función array_push() para agregar "Juan" al final del array y 
+muestra el array actualizado. -->
+
+<?php
+
+?>
