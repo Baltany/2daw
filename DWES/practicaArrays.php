@@ -71,4 +71,31 @@ $animales[] = "pez";
 echo "<br>";
 echo "<br>La cantidad actualizada de animales en el array es: ".count($animales) . " animales";
 ?>
+<!-- 
+• Objetivo: Practicar la creación y acceso a elementos de un array 
+multidimensional. 
+• Descripción: 
+1. Crea un array multidimensional llamado $productos que contenga tres 
+arrays internos, cada uno representando un producto con nombre, precio 
+y cantidad. 
+2. Muestra el nombre y el precio del segundo producto. 
+3. Muestra todos los productos con un bucle foreach.  -->
 
+<?php
+$productos = array(
+    array("nombre" => "Producto1","precio" => "10", "cantidad" => "5"),
+    array("nombre" => "Producto2","precio" => "5", "cantidad" => "1"),
+    array("nombre" => "Producto3","precio" => "8", "cantidad" => "3")
+);
+
+
+echo "El nombre del segundo producto es: ". $productos[1]["nombre"]  . " y el precio del mismo es: ". $productos[1]["precio"] . "€";
+echo "<br>";
+echo "<br>";
+echo "Mostrando los productos con un foreach";
+
+
+foreach($productos as $i=>$valor){
+    echo "Producto " . ($i + 1) . " Nombre: " . $valor["nombre"] . ", Precio: " . $valor["precio"] . "€ y la cantidad es: ". $valor["cantidad"] . "<br>";
+}
+?>
