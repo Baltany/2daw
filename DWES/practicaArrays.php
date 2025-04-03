@@ -277,9 +277,6 @@ echo "La suma de los números en el array es: " . $total;
 
 ?>
 
-
-
-
 <!-- • Objetivo: Implementar un algoritmo para eliminar elementos duplicados de un 
 array sin usar array_unique(). 
 • Descripción: 
@@ -288,11 +285,24 @@ array sin usar array_unique().
 primera aparición de cada elemento. 
 3. Muestra el array sin duplicados.  -->
 <?php
+$elementos = array(2, 2, 8, 5, 3, 8, 1, 2, 5, 7, 3, 4, 6, 1);
 
+function eliminarDuplicados($elementos){
+    $elementosSinDuplicados = array();
+    foreach($elementos as $elemento){
+        // Primero recorremos el array de duplicados
+        // una vez recorrido si el elemento que se recorre no se encuentra en el array sin duplicados
+        // le hacemos un push
+        if(!in_array($elemento,$elementosSinDuplicados)){
+            array_push($elementosSinDuplicados,$elemento);
+        }
+    }
+    return $elementosSinDuplicados;
+}
+$elementosSinDuplicados = eliminarDuplicados($elementos);
+echo "Array sin duplicados: ";
+print_r($elementosSinDuplicados);
 ?>
-
-
-
 
 <!-- 
 • Objetivo: Implementar un algoritmo para contar cuántas veces aparece cada 
