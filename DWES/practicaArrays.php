@@ -200,3 +200,40 @@ echo "El valor minimo es: " . $minimo . "<br>";
 ?>
 
 
+<!-- Ejercicio 10: Contar las Vocales en una Cadena 
+• Objetivo: Practicar el uso de bucles, operadores lógicos y funciones para 
+manejar cadenas. 
+• Descripción: 
+1. Solicita una cadena de texto al usuario. 
+2. Escribe un algoritmo que cuente cuántas vocales hay en la cadena. -->
+
+<?php
+$cadena = "Soy un texto de prueba para contar las vocales";
+
+function contarVocales($cadena){
+    $vocales = array("a","e","i","o","u","A","E","I","O","U");
+    $contador = 0;
+
+    // el split lo que hace es convertirlo a a array para que podamos recorrerlo con el foreach
+    $cadenaUsuario = str_split($cadena);
+
+    foreach($cadenaUsuario as $valor){
+        if(in_array($valor,$vocales)){
+            $contador++;
+        }
+
+    }
+    return $contador;
+
+}
+$numeroDeVocales = contarVocales($cadena);
+echo "El número de vocales en la cadena es: " . $numeroDeVocales;
+
+?>
+
+
+<!-- • Objetivo: Practicar el uso de arrays, bucles y operadores aritméticos. 
+• Descripción: 
+1. Crea un array de números con al menos 5 elementos. 
+2. Escribe un algoritmo que calcule el promedio de los números en el array. 
+3. Muestra el promedio.  -->
