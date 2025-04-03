@@ -130,3 +130,46 @@ print_r($nombres);
 ?>
 
 
+<!-- • Objetivo: Practicar la eliminación de elementos de un array. 
+• Descripción: 
+1. Crea un array llamado $paises con los valores "España", "Francia", 
+"Italia", "Alemania", "Portugal". 
+2. Usa la función unset() para eliminar "Italia" del array. 
+3. Muestra el array después de eliminar el elemento. 
+4. Usa la función array_pop() para eliminar el último elemento del array y 
+muestra el array actualizado. -->
+
+
+<?php
+$paises = array("España","Francia","Italia","Alemania","Portugal");
+// el metodo unset elimina un elemento del array que se le pida
+unset($paises[2]);
+echo "Array sin Italia: ";
+print_r($paises);
+// el metodo pop elimina el ultimo elemento del array
+array_pop($paises);
+echo "<br>";
+echo "Array sin el ultimo elemento: ";
+print_r($paises);
+?>
+
+
+<!-- • Objetivo: Practicar la búsqueda de valores en un array. 
+• Descripción: 
+1. Crea un array numérico llamado $edades con los valores 20, 30, 40, 25, 
+35. 
+2. Usa la función array_search() para encontrar la posición de la edad 25 
+en el array. 
+3. Si el valor existe, muestra la posición, de lo contrario muestra un 
+mensaje indicando que no se encontró.  -->
+
+<?php
+$edades = array(20,30,40,25,35);
+$posicion = array_search(25,$edades);
+if($posicion != false){
+    echo "La posicion de la edad 25 es: " . $posicion + 1;
+}else{
+    echo "No se encontro la edad 25 en el array";
+}
+?>
+
