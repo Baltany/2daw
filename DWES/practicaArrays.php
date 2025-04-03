@@ -311,8 +311,33 @@ elemento en un array.
 1. Crea un array con algunos elementos repetidos. 
 2. Escribe un algoritmo que cuente la frecuencia de cada elemento. 
 3. Muestra el número de veces que aparece cada elemento.  -->
-
 <?php
+$elementos = array(2, 2, 6, 1, 2, 6, 1, 6, 7, 1);
 
+function contarFrecuencias($elementos){
+    // Crear un array vacío para almacenar las frecuencias
+    $frecuencias = array();
+    
+    // Recorrer el array de elementos
+    foreach($elementos as $elemento){
+        // Si el elemento ya está en el array de frecuencias, incrementar su contador
+        if(isset($frecuencias[$elemento])){
+            $frecuencias[$elemento]++;
+        } else {
+            // Si no está, agregarlo con un contador inicial de 1
+            $frecuencias[$elemento] = 1;
+        }
+    }
+    
+    return $frecuencias;
+}
 
+// Llamamos a la función para contar las frecuencias
+$frecuencias = contarFrecuencias($elementos);
+
+// Mostrar las frecuencias
+echo "Frecuencia de los elementos en el array: <br>";
+foreach($frecuencias as $elemento => $cantidad){
+    echo "El elemento $elemento aparece $cantidad veces.<br>";
+}
 ?>
