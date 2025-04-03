@@ -237,3 +237,19 @@ echo "El número de vocales en la cadena es: " . $numeroDeVocales;
 1. Crea un array de números con al menos 5 elementos. 
 2. Escribe un algoritmo que calcule el promedio de los números en el array. 
 3. Muestra el promedio.  -->
+
+<?php
+$numeros = array(10, 20, 30, 40, 50);
+
+function calcularPromedio($numeros){
+    $suma = 0;
+    foreach($numeros as $numero){
+        $suma += $numero;
+    }
+    $promedio = $suma / count($numeros);
+    return $promedio;
+}
+$promedio = calcularPromedio($numeros);
+echo "El promedio de los números en el array es: " . $promedio;
+
+?>
