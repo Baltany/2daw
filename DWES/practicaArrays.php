@@ -173,3 +173,30 @@ if($posicion != false){
 }
 ?>
 
+<!-- • Objetivo: Implementar un algoritmo para encontrar el valor máximo y mínimo 
+de un array sin usar las funciones integradas de PHP. 
+• Descripción: 
+1. Crea un array numérico con al menos 5 elementos. 
+2. Escribe un algoritmo que recorra el array y determine el valor máximo y 
+mínimo sin usar max() ni min(). 
+3. Muestra el valor máximo y mínimo.  -->
+<?php
+$numeros = array(10, 20, 5, 30, 15);
+// Importante inicializar el maximo y el minimo con el PRIMER valor del array
+$maximo = $numeros[0];
+$minimo = $numeros[0];
+
+
+foreach($numeros as $valor){
+    if($valor > $maximo){
+        $maximo = $valor;
+    }
+    if($valor < $minimo){
+        $minimo = $valor;
+    }
+}
+echo "El valor maximo es: " . $maximo . "<br>";
+echo "El valor minimo es: " . $minimo . "<br>";
+?>
+
+
