@@ -315,16 +315,16 @@ elemento en un array.
 $elementos = array(2, 2, 6, 1, 2, 6, 1, 6, 7, 1);
 
 function contarFrecuencias($elementos){
-    // Crear un array vacío para almacenar las frecuencias
+    // Crear un array vacio para almacenar las frecuencias
     $frecuencias = array();
     
     // Recorrer el array de elementos
     foreach($elementos as $elemento){
-        // Si el elemento ya está en el array de frecuencias, incrementar su contador
+        // Si el elemento ya esta en el array de frecuencias, incrementamos el contador
         if(isset($frecuencias[$elemento])){
             $frecuencias[$elemento]++;
         } else {
-            // Si no está, agregarlo con un contador inicial de 1
+            // Si no esta, agregarlo con un contador inicial de 1
             $frecuencias[$elemento] = 1;
         }
     }
@@ -332,11 +332,10 @@ function contarFrecuencias($elementos){
     return $frecuencias;
 }
 
-// Llamamos a la función para contar las frecuencias
 $frecuencias = contarFrecuencias($elementos);
 
-// Mostrar las frecuencias
 echo "Frecuencia de los elementos en el array: <br>";
+
 foreach($frecuencias as $elemento => $cantidad){
     echo "El elemento $elemento aparece $cantidad veces.<br>";
 }
