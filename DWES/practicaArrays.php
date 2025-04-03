@@ -253,3 +253,56 @@ $promedio = calcularPromedio($numeros);
 echo "El promedio de los números en el array es: " . $promedio;
 
 ?>
+
+
+<!-- • Objetivo: Implementar un algoritmo para calcular la suma de todos los 
+elementos de un array. 
+• Descripción: 
+1. Crea un array numérico con al menos 5 elementos. 
+2. Escribe un algoritmo que recorra el array y sume todos los elementos. 
+3. Muestra el resultado de la suma.  -->
+
+<?php
+$numeros = array(1, 2, 3, 4, 5);
+
+function calcularSuma($numeros){
+    $suma = 0;
+    foreach($numeros as $numero){
+        $suma += $numero;
+    }
+    return $suma;
+}
+$total = calcularSuma($numeros);
+echo "La suma de los números en el array es: " . $total;
+
+?>
+
+
+
+
+<!-- • Objetivo: Implementar un algoritmo para eliminar elementos duplicados de un 
+array sin usar array_unique(). 
+• Descripción: 
+1. Crea un array con algunos elementos duplicados. 
+2. Escribe un algoritmo que elimine los duplicados manteniendo solo la 
+primera aparición de cada elemento. 
+3. Muestra el array sin duplicados.  -->
+<?php
+
+?>
+
+
+
+
+<!-- 
+• Objetivo: Implementar un algoritmo para contar cuántas veces aparece cada 
+elemento en un array. 
+• Descripción: 
+1. Crea un array con algunos elementos repetidos. 
+2. Escribe un algoritmo que cuente la frecuencia de cada elemento. 
+3. Muestra el número de veces que aparece cada elemento.  -->
+
+<?php
+
+
+?>
