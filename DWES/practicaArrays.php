@@ -113,5 +113,20 @@ inverso.
 muestra el array actualizado. -->
 
 <?php
+$nombres = array("ana","luis","carlos","maria");
+echo "Mostrando el array en orden inverso: " . print_r(array_reverse($nombres));
+echo "<br>";
+echo "<br>";
 
+if(in_array("carlos",$nombres)){
+    echo "carlos se encuentra en el array";
+}else{
+    echo "carlos NO se encuentra en el array";
+    return;
+}
+array_push($nombres,"Juan");
+echo "Array actualizado: ";
+print_r($nombres);
 ?>
+
+
