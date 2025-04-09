@@ -73,5 +73,31 @@ function sumarColumnas($matriz){
     return $suma;
 }
 print_r(sumarColumnas($matriz));
+
+
+echo "<br>";
+echo "<br>";
+
+// La suma de las filas y las columnas de una matriz
+
+echo "La suma de las filas y columnas de una matriz generada automaticamente es: ";
+
+
+function sumasFilasColumnas($matriz){
+    
+    $arraySumaFilas = sumarFilas($matriz);
+    $arraySumaColumnas = sumarColumnas($matriz);
+    
+    $sumaFilas = array_sum($arraySumaFilas);  // Sumar todas las sumas de las filas
+    $sumaColumnas = array_sum($arraySumaColumnas);  // Sumar todas las sumas de las columnas
+
+
+    return "La suma de las filas es: $sumaFilas y la suma de las columnas es: $sumaColumnas";
+
+}
+
+echo(sumasFilasColumnas($matriz));
+
+
 ?>
 
