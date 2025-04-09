@@ -99,5 +99,25 @@ function sumasFilasColumnas($matriz){
 echo(sumasFilasColumnas($matriz));
 
 
+// La suma de la diagonal principal de una matriz
+
+echo "<br>";
+echo "<br>";
+function sumaDiagonal($matriz){
+    $sumaDiagonal = 0;
+    // contamos numero de filas
+    $numeroFilas = count($matriz);
+    // recorremos el numero de filas
+    for($i=0;$i < $numeroFilas;$i++){
+        // sumamos el elemnento indicado la posicion [i]=fila y [i]=columna
+        // es decir [i]=fila 1
+        // [i]=columna 1 ...
+        $sumaDiagonal += $matriz[$i][$i];
+    }
+    return $sumaDiagonal;
+}
+echo "La suma de la diagonal principal de la matriz generada automaticamente es: ";
+echo(sumaDiagonal($matriz));
+
 ?>
 
