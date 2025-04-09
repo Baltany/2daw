@@ -324,7 +324,7 @@ function contarFrecuencias($elementos){
         if(isset($frecuencias[$elemento])){
             $frecuencias[$elemento]++;
         } else {
-            // Si no esta, agregarlo con un contador inicial de 1
+            // Si no esta, lo agregamos con un contador inicial de 1
             $frecuencias[$elemento] = 1;
         }
     }
