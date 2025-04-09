@@ -119,5 +119,26 @@ function sumaDiagonal($matriz){
 echo "La suma de la diagonal principal de la matriz generada automaticamente es: ";
 echo(sumaDiagonal($matriz));
 
+
+echo "<br>";
+echo "<br>";
+// Calcular la matriz traspuesta
+function calcularTraspuesta($matriz){
+    $traspuesta = array();
+    $numeroFilas = count($matriz);
+    $numeroColumnas = count($matriz[0]); 
+
+    for($i=0;$i<$numeroFilas;$i++){
+        for($j=0;$j<$numeroColumnas;$j++){
+            // invertimos filas y columnas
+            // es decir la fila 1 se convierte en columna 1
+            $traspuesta[$j][$i] = $matriz[$i][$j];
+        }
+    }
+    return $traspuesta;
+}
+
+echo "La matriz transpuesta de la matriz generada automaticamente es: ";
+echo pintarMatriz(calcularTraspuesta($matriz));
 ?>
 
