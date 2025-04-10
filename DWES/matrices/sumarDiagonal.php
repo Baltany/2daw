@@ -19,3 +19,7 @@ else{
 }
 
 ?>
+
+<br>
+<br>
+<a href="index.html">Volver al index</a>
