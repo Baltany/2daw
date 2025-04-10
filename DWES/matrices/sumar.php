@@ -4,15 +4,14 @@ if(!isset($_POST['enviar'])){
 ?>
 <form action="" method="POST">
     Número filas:<input type="text" name="filas"><br>
-    Número de columnas: <input type="text" name="col"><br>
+    Número de columnas:<input type="text" name="col"><br>
     <input type="submit" name="enviar" value="Enviar">
 </form>
 <?php
 }
 else{
 
-        $matriz = generarMatriz($_POST['filas'],$_POST['col']);
-
+    $matriz = generarMatriz($_POST['filas'],$_POST['col']);
     echo(pintarMatriz($matriz));
 
 
