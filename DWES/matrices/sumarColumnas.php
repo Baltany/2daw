@@ -14,12 +14,12 @@ else{
     $matriz = generarMatriz($_POST['filas'],$_POST['col']);
     echo(pintarMatriz($matriz));
 
+    //La suma de las columnas de una matriz -->
+    echo "La suma de las columnas de una matriz generada automaticamente es: ";
 
-    // La suma de la filas de una matriz -->
-    echo "La suma de las filas de la matriz generada automaticamente es: ";
+    print_r(sumarColumnas($matriz));
 
-    print_r(sumarFilas($matriz));
+
 }
-
 
 ?>
