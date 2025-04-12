@@ -42,7 +42,7 @@ function sumarColumnas($matriz){
     // Contamos el numero de columnas de la matriz
     // y lo guardamos en la variable $numeroCol
     $numeroCol = count($matriz[0]);
-    // Una vez que tenemos el numero de columnas,
+    // Una vez que tenemos el numero de columnas y
     // recorremos la matriz y sumamos cada columna
     for($i=0;$i < $numeroCol;$i++){
         $sumaColumna = 0;
