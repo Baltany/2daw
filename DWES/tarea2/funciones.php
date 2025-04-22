@@ -30,3 +30,5 @@ function showPersona($agenda) {
     echo "</ul>";
 }
 ?>
+<a href="index.html">Volver</a>
+
