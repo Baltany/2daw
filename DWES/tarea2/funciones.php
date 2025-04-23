@@ -2,7 +2,7 @@
 require_once 'persona.php';
 
 function addPersona(&$agenda, $nombre, $ntelefono, &$nextId) {
-    // Comprobar si ya existe (opcional, para evitar duplicados por nombre)
+    // Comprobar si ya existe
     foreach ($agenda as $p) {
         if ($p->nombre === $nombre) {
             echo "<p style='color:red;'>Este nombre ya existe, se va a reemplazar.</p>";
@@ -11,7 +11,7 @@ function addPersona(&$agenda, $nombre, $ntelefono, &$nextId) {
         }
     }
 
-    // Crear y añadir persona
+    // Crear y anadir persona
     $persona = new Persona($nextId, $nombre, $ntelefono);
     $agenda[] = $persona;
     $nextId++;
