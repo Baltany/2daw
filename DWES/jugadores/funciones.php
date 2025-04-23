@@ -28,7 +28,19 @@ function getPosicion(){
     global $connection;
     $result = $connection->query("SELECT DISTINCT posicion FROM jugadores");
     $posiciones = [];
-    
+
+    if($result && $result -> num_rows > 0){
+        while($row = $result -> fetch_object()){
+            $clave = explode(',',$row -> clave);
+            foreach($clave as $valor){
+                $valor = trim($valor);
+                if(!in_array($valor,$posiciones)){
+                    $posiciones[] = $valor;
+                }
+            }
+        }
+    }
+
 
 }
 
