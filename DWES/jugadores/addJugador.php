@@ -1,4 +1,6 @@
 <?php
+// Necesitamos recoger la conexion ya que tenemos hacer un get de las posciones que hay
+require_once 'conexion.php';
 require_once 'funciones.php';
 if(!isset($_POST['enviar'])){
 
@@ -17,6 +19,8 @@ if(!isset($_POST['enviar'])){
 <?php
 }
 else{
+    //Recogemos los datos del formulario
+
 
 }
 ?>
