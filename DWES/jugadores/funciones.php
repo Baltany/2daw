@@ -1,4 +1,19 @@
 <?php
+// Nos conectamos a la bbdd
+function getConexion(){
+    $host = "localhost";
+    $user = "dwes";
+    $password = "abc123.";
+    $dbname = "jugadores";
+
+    $connection = new mysqli($host, $user, $password, $dbname);
+    
+    if ($connection->connect_error) {
+        die("Conexión fallida: " . $connection->connect_error);
+    }
+    return $connection;
+}
+
 // Insert into jugadores values("lamine","12345678x","19","DELANTERO","FCBARCELONA","5");
 function addJugador($nombre,$dni,$dorsal,$posicion,$equipo,$goles){
     $connection = getConexion();   
@@ -32,21 +47,26 @@ function getPosiciones(){
         return $result;
 }
 
-
-
-function getConexion(){
-    $host = "localhost";
-    $user = "dwes";
-    $password = "abc123.";
-    $dbname = "jugadores";
-
-    $connection = new mysqli($host, $user, $password, $dbname);
-    
-    if ($connection->connect_error) {
-        die("Conexión fallida: " . $connection->connect_error);
+// Mostrar Jugador
+function getJugador(){
+    $connection = getConexion();
+    $stmt = $connection -> prepare("SELECT * FROM jugadores");
+    $stmt->execute();
+    if($stmt === false){
+        die("Error al obtener los datos de la bbdd". $connection -> error);
     }
-    return $connection;
+
+    $result = $stmt->get_result();
+    $jugadores = [];
+    while($jugador = $result -> fetch_object()){
+        $jugadores[] = $jugador;
+
+    }
+
+    $stmt->close();
+    return $jugadores;
 }
+
 
 
 ?>

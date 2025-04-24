@@ -27,6 +27,10 @@ $posiciones = getPosiciones();
     <input type="submit" name="enviar" value="Enviar">
 </form>
 
+<a href="index.html">Volver</a>
+<br>
+<br>
+
 <?php
 if(isset($_POST['enviar'])){
     //Recogemos los datos del formulario
@@ -37,9 +41,6 @@ if(isset($_POST['enviar'])){
     $equipo= $_POST['equipo'];
     $goles= $_POST['goles'];
     addJugador($nombre,$dni,$dorsal,$posicion,$equipo,$goles);
-
-
-
 
 }
 ?>
