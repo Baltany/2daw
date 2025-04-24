@@ -24,24 +24,33 @@ function addJugador($nombre,$dni,$dorsal,$posicion,$equipo,$goles){
     $stmt->close();
 }
 
-function getPosicion(){
-    global $connection;
-    $result = $connection->query("SELECT DISTINCT posicion FROM jugadores");
-    $posiciones = [];
-
-    if($result && $result -> num_rows > 0){
-        while($row = $result -> fetch_object()){
-            $clave = explode(',',$row -> clave);
-            foreach($clave as $valor){
-                $valor = trim($valor);
-                if(!in_array($valor,$posiciones)){
-                    $posiciones[] = $valor;
-                }
-            }
-        }
+// Recorremos el enum 'Posiciones' para así poder mostrarlo al cliente
+function getPosiciones(){
+    $connection=getConexion();
+    try{
+        $result = $connection->query("SELECT DISTINCT posicion FROM posiciones");
+    }catch(Exception $ex){
+        echo $ex->getMessage();
+    }
+    
+        return $result;
     }
 
 
+
+function getConexion(){
+    $host = "localhost";
+    $user = "dwes";
+    $password = "abc123.";
+    $dbname = "jugadores";
+
+    $connection = new mysqli($host, $user, $password, $dbname);
+    
+    if ($connection->connect_error) {
+        die("Conexión fallida: " . $connection->connect_error);
+    }
+    return $connection;
 }
+
 
 ?>

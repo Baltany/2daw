@@ -2,20 +2,22 @@
 // Necesitamos recoger la conexion ya que tenemos hacer un get de las posciones que hay
 require_once 'conexion.php';
 require_once 'funciones.php';
-if(!isset($_POST['enviar'])){
-    //leemos las posiciones que hay
-    $posiciones = getPosiciones();
+
+//leemos las posiciones que hay
+$posiciones = getPosiciones();
+
+
 ?>
 <form action="" method="POST">
     Nombre: <input type="text" name="nombre"><br>
     DNI: <input type="text" name="dni"><br>
     Dorsal: <input type="text" name="dorsal"><br>
     <!-- Recorremos las posiciones que hay en la bbdd-->
-    Posicion: <select type="text" name="posicion[]" multiple>
+    Posicion: <select type="text" name="posicion" >
             <?php
-            foreach($posiciones as $posicion){
+            while($row = $posiciones->fetch_object()){
             ?>
-            <option value="<?php echo $posicion;?>"></option>    
+            <option value="<?php echo $row->posicion; ?>"> <?php echo $row->posicion; ?></option>    
             <?php
             }
             ?>
@@ -27,8 +29,7 @@ if(!isset($_POST['enviar'])){
 </form>
 
 <?php
-}
-else{
+if(isset($_POST['enviar'])){
     //Recogemos los datos del formulario
 
 
