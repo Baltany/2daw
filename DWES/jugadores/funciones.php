@@ -67,6 +67,17 @@ function getJugador(){
     return $jugadores;
 }
 
+// Editar jugador
+function editJugador(){
+    $connection = getConexion();
+    $stmt = $connection -> prepare("UPDATE jugadores SET nombre = ?,dni = ?,dorsal = ?,posicion = ?, equipo = ?,goles = ? WHERE id = ?");
+    $stmt -> execute();
+
+    if($stmt === false){
+        
+    }
+}
+
 
 
 ?>
