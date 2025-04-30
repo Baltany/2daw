@@ -85,6 +85,32 @@ function editJugador($id,$nombre,$dni,$dorsal,$posicion,$equipo,$goles){
 
 }
 
+// Buscar jugador
+function buscarJugador($nombre){
+    $connection = getConexion();
+    $stmt = $connection -> prepare("SELECT * FROM jugadores where nombre LIKE ?");
+
+    if($stmt === false){
+        die("Error al obtener los datos de la bbdd".$connection -> error);
+    }
+    
+    $nombre = "%" . $nombre . "%";
+    $stmt -> bind_param("s",$nombre);
+    if($stmt-> execute()){
+        $result = $stmt->get_result();
+        $jugadores = [];
+        while($jugador = $result -> fetch_object()){
+            $jugadores[] = $jugador;
+        }
+        print_r($jugadores);
+    }else{
+        echo "No se ha modificado ninguna fila";
+    }
+
+    return $jugadores;
+
+}
+
 
 
 ?>
