@@ -68,15 +68,14 @@ function getJugador(){
 }
 
 // Editar jugador
-function editJugador(){
+function editJugador($id,$nombre,$dni,$dorsal,$posicion,$equipo,$goles){
     $connection = getConexion();
     $stmt = $connection -> prepare("UPDATE jugadores SET nombre = ?,dni = ?,dorsal = ?,posicion = ?, equipo = ?,goles = ? WHERE id = ?");
-    $stmt -> execute();
 
     if($stmt === false){
         die("Error al obtener los datos de la bbdd". $connection -> error );
     }
-    $stmt -> bind_param("ssssss",$nombre,$dni,$dorsal,$posicion,$equipo,$goles);
+    $stmt -> bind_param("ssssssi",$nombre,$dni,$dorsal,$posicion,$equipo,$goles,$id);
 
     if($stmt->execute()){
         echo "Filas afectadas: " . $stmt->affected_rows;

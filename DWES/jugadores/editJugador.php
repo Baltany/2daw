@@ -19,18 +19,17 @@ $editarId = isset($_GET['editar']) ? $_GET['editar'] : null;
     <?php foreach ($jugadores as $jugador): ?>
     <tr>
         <?php if ($jugador->id == $editarId): ?>
-            <form method="POST" action="editar_jugador.php">
+            <form method="POST" action="">
                 <input type="hidden" name="id" value="<?= $jugador->id ?>">
                 <td><input type="text" name="nombre" value="<?= $jugador->nombre ?>" required></td>
                 <td><input type="text" name="dni" value="<?= $jugador->dni ?>" required></td>
-                <td><input type="number" name="dorsal" value="<?= $jugador->dorsal ?>" min="1" max="11"></td>
+                <td><input type="number" name="dorsal" value="<?= $jugador->dorsal ?>" required></td>
                 <td>
-                    <select name="posicion">
                     <select type="text" name="posicion" >
                         <?php
                             while($row = $posiciones->fetch_object()){
                         ?>
-                        <option value="<?php echo $row->posicion; ?>"> <?php echo $row->posicion; ?></option>    
+                        <option value="<?php echo $row -> posicion; ?>"> <?php echo $row -> posicion; ?></option>    
                         <?php
                         }
                         ?>
@@ -39,8 +38,8 @@ $editarId = isset($_GET['editar']) ? $_GET['editar'] : null;
                 <td><input type="text" name="equipo" value="<?= $jugador->equipo ?>" required></td>
                 <td><input type="number" name="goles" value="<?= $jugador->goles ?>" required></td>
                 <td>
-                    <input type="submit" value="Guardar">
-                    <a href="editJugador.php">Cancelar</a>
+                    <input type="submit" name="guardar" value="guardar">
+                    <input href="editJugador.php" type="submit" name="cancelar" value="cancelar">
                 </td>
             </form>
         <?php else: ?>
@@ -58,3 +57,18 @@ $editarId = isset($_GET['editar']) ? $_GET['editar'] : null;
 
 <br><br>
 <a href="index.html">Volver</a>
+
+<?php
+if(isset($_POST['guardar'])){
+    //Recogemos los datos del formulario
+    $id = $_POST['id'];
+    $nombre= $_POST['nombre'];
+    $dni= $_POST['dni'];
+    $dorsal= $_POST['dorsal'];
+    $posicion= $_POST['posicion'];
+    $equipo= $_POST['equipo'];
+    $goles= $_POST['goles'];
+    editJugador($id,$nombre,$dni,$dorsal,$posicion,$equipo,$goles);
+
+}
+?>
