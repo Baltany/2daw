@@ -5,12 +5,12 @@ function getConexion(){
     $user = "dwes";
     $password = "abc123.";
     $dbname = "jugadores";
-
-    $connection = new mysqli($host, $user, $password, $dbname);
+    try{
+        $connection = new mysqli($host, $user, $password, $dbname);
+    }catch (Exception $ex){
+        echo $ex->getMessage();
     
-    if ($connection->connect_error) {
-        die("Conexión fallida: " . $connection->connect_error);
-    }
+    }    
     return $connection;
 }
 
@@ -74,8 +74,16 @@ function editJugador(){
     $stmt -> execute();
 
     if($stmt === false){
-        
+        die("Error al obtener los datos de la bbdd". $connection -> error );
     }
+    $stmt -> bind_param("ssssss",$nombre,$dni,$dorsal,$posicion,$equipo,$goles);
+
+    if($stmt->execute()){
+        echo "Filas afectadas: " . $stmt->affected_rows;
+    }else{
+        echo "No se ha modficido ninguna fila";
+    }
+
 }
 
 

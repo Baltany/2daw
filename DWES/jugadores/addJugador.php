@@ -14,11 +14,11 @@ $posiciones = getPosiciones();
     <!-- Recorremos las posiciones que hay en la bbdd-->
     Posicion: <select type="text" name="posicion" >
             <?php
-            while($row = $posiciones->fetch_object()){
+                while($row = $posiciones->fetch_object()){
             ?>
             <option value="<?php echo $row->posicion; ?>"> <?php echo $row->posicion; ?></option>    
             <?php
-            }
+                }
             ?>
             </select>
     <br>
