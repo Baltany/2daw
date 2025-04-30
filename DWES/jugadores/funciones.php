@@ -89,11 +89,11 @@ function editJugador($id,$nombre,$dni,$dorsal,$posicion,$equipo,$goles){
 function buscarJugador($nombre){
     $connection = getConexion();
     $stmt = $connection -> prepare("SELECT * FROM jugadores where nombre LIKE ?");
-
+    //$html = "<table>";
     if($stmt === false){
         die("Error al obtener los datos de la bbdd".$connection -> error);
     }
-    
+
     $nombre = "%" . $nombre . "%";
     $stmt -> bind_param("s",$nombre);
     if($stmt-> execute()){
@@ -103,6 +103,7 @@ function buscarJugador($nombre){
             $jugadores[] = $jugador;
         }
         print_r($jugadores);
+        //$html += "</table>";
     }else{
         echo "No se ha modificado ninguna fila";
     }
