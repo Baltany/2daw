@@ -195,4 +195,6 @@ if($b < $c){
     $c = $aux;
 }
 echo "El orden de los numeros es: $a, $b, $c";
+
+
 ?>
