@@ -84,6 +84,69 @@ echo "</table>";
 ?>
 
 <?php
+$suma = 0;
+for($i=1; $i<=100; $i++){
+    $suma += $i;
+}
+echo "La suma de los numeros enteros es: $suma";
+
+$suma = 0;
+$i = 1;
+while ($i <=100){
+    $suma += $i;
+    $i++;
+}
+echo "La suma de los numeros enteros es: $suma";
+
+$suma = 0;
+$i = 1;
+do{
+    $suma+=$i;
+    $i++;
+}while($i <= 100);
+echo $suma;
+?>
+
+<?php
+$suma = 0;
+for($i=1; $i<=100; $i++){
+    $suma += $i * $i;
+}
+echo "La suma de los cuadrados de los 100 primeros numeros enteros es: $suma";
+?>
+
+
+<?php
+$suma = 0;
+for($i=2; $i<=200; $i+=2){
+    $suma += $i;
+}
+echo "La suma de los 100 primeros numeros pares es: $suma";
 
 ?>
 
+
+<?php
+$a = 10;
+$b = 20;
+$c = 30;
+
+if($a < $b){
+    $aux = $a;
+    $a = $b;
+    $b = $aux;
+    }
+if($a < $c){
+    $aux = $a;
+    $a = $c;
+    $c = $aux;
+}
+if($b < $c){
+    $aux = $b;
+    $b = $c;
+    $c = $aux;
+}
+echo "El orden de los numeros es: $a, $b, $c";
+
+
+?>
