@@ -7,3 +7,6 @@ DWEC desarrollo web entorno cliente 6h
 
 proyecto juntando hlc y dwec con springboot y angular
 
+Para ejecutar xampp:
+sudo /opt/lampp/lampp start
+
