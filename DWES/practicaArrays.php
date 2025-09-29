@@ -1,4 +1,4 @@
-<!-- 
+<!--  https://www.php.net/manual/es/ref.array.php documentasion
 • Objetivo: Practicar la creación y acceso a elementos de un array. 
 • Descripción: 
 1. Crea un array llamado $colores que contenga los colores "rojo", 
