@@ -10,3 +10,21 @@ foreach($_SERVER as $key => $value){
 }
 ?>
 </table>
+
+
+<!-- Mostrar la matriz -->
+
+<?php
+$matriz = array(
+    "Marketing" => array(
+        "nombre" => "pepe",
+        "apellidos" => "López",
+        "Salario" => 1500,
+        "Edad" => 35
+    ),
+    "Contabilidad" => array(
+        "nombre" => "Juan"
+    )
+);
+
+?>
