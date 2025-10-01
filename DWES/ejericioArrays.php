@@ -96,6 +96,50 @@ echo "nº animales actualizado en el array:".count($animales);
 echo "<br>";
 ?>
 
+<!-- 
+• Objetivo: Practicar la creación y acceso a elementos de un array 
+multidimensional. 
+• Descripción: 
+1. Crea un array multidimensional llamado $productos que contenga tres 
+arrays internos, cada uno representando un producto con nombre, precio 
+y cantidad. 
+2. Muestra el nombre y el precio del segundo producto. 
+3. Muestra todos los productos con un bucle foreach.  -->
+<?php
+$productos = array(
+    array("nombre" => "Leche","precio"=>2.3,"cantidad"=>1),
+    array("nombre" => "Agua","precio"=>3,"cantidad"=>2),
+    array("nombre" => "Galletas Oreo","precio"=>10,"cantidad"=>5)
+);
+echo "<br>";
+echo "<br>";
+echo "El nombre del 2º producto es ".$productos[2]["nombre"]. " y el precio es: ".$productos[2]["precio"];
+echo "<br>";
+echo "<br>";
+echo "Mostrando productos con un foreach";
+echo "<br>";
+
+foreach ($productos as $clave=>$valor){
+    echo "Producto ". ($clave + 1) . " Nombre: ". $valor["nombre"]. " precio: ".$valor["precio"]." y cantidad: ".$valor["cantidad"]."<br>";
+}
+
+
+echo "<br>";
+echo "<br>";
+
+?>
+<!-- Ejercicio 6: Funciones de Arrays 
+• Objetivo: Practicar el uso de funciones integradas para manipular arrays. 
+• Descripción: 
+1. Crea un array llamado $nombres con los valores "Ana", "Luis", "Carlos", 
+"Maria". 
+2. Usa la función array_reverse() para mostrar los nombres en orden 
+inverso. 
+3. Usa la función in_array() para comprobar si "Carlos" está en el array. 
+4. Usa la función array_push() para agregar "Juan" al final del array y 
+muestra el array actualizado. -->
+
+
 
 
 
