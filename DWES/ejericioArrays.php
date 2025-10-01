@@ -138,6 +138,34 @@ inverso.
 3. Usa la función in_array() para comprobar si "Carlos" está en el array. 
 4. Usa la función array_push() para agregar "Juan" al final del array y 
 muestra el array actualizado. -->
+<?php
+$nombres = array("Ana","Luis","Carlos","Maria");
+echo "Mostrando el array en orden inverso: <br>";
+var_dump(array_reverse($nombres));
+echo "<br>";
+echo "<br>";
+if(in_array("Carlos",$nombres)){
+    echo "Carlos está en el array";
+}else{
+    echo "No existe";
+    return;
+}
+echo "<br>";
+
+array_push($nombres,"Juan");
+echo "Array actualizado";
+var_dump($nombres);
+
+?>
+
+<!-- • Objetivo: Practicar la eliminación de elementos de un array. 
+• Descripción: 
+1. Crea un array llamado $paises con los valores "España", "Francia", 
+"Italia", "Alemania", "Portugal". 
+2. Usa la función unset() para eliminar "Italia" del array. 
+3. Muestra el array después de eliminar el elemento. 
+4. Usa la función array_pop() para eliminar el último elemento del array y 
+muestra el array actualizado. -->
 
 
 
