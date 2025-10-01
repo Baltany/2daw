@@ -49,6 +49,53 @@ echo "<br><br>";
 echo "Nombre: ". $persona["nombre"] . " y ciudad ". $persona["ciudad"];
 $persona["profesion"] = "Ingeniero";
 echo "<br><br>";
-var_dump($persona);  
+var_dump($persona); 
+echo "<br>";
+echo "<br>";
+
 ?>
+
+
+<!-- 
+• Objetivo: Practicar la ordenación de arrays. 
+• Descripción: 
+1. Crea un array numérico llamado $numeros con los valores 3, 1, 4, 1, 5, 
+9. 
+2. Ordena el array en orden ascendente y muestra el resultado. 
+3. Ordena el array en orden descendente y muestra el resultado.  -->
+<?php
+$numeros = array(3,1,4,1,5,9);
+sort($numeros);
+echo "Mostrando array ordenado" . "<br>";
+
+var_dump($numeros);
+echo "<br>";
+echo "<br>";
+echo "Mostrando array en orden acendente";
+rsort($numeros);
+var_dump($numeros);
+echo "<br>";
+
+?>
+
+<!-- 
+• Objetivo: Practicar el uso de la función count(). 
+• Descripción: 
+1. Crea un array llamado $animales con los valores "gato", "perro", 
+"elefante", "jirafa". 
+2. Muestra el número de elementos en el array. 
+3. Añade dos animales más al array. 
+4. Muestra el número actualizado de elementos.  -->
+<?php
+$animales = array("gato","perro","elefante","jirafa");
+echo "nº animales en el array:".count($animales);
+$animales[] = "uron";
+$animales[] = "mono";
+echo "<br>";
+echo "nº animales actualizado en el array:".count($animales);
+echo "<br>";
+?>
+
+
+
 
