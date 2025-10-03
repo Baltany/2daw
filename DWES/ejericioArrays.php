@@ -8,7 +8,6 @@
 4. Muestra todos los elementos del array usando un bucle for.  -->
 <?php
 
-use function PHPSTORM_META\elementType;
 
 $colores = array("rojo","verde","asul","amarillo");
 echo "<br>";
