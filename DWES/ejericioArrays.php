@@ -7,6 +7,9 @@
 3. Agrega un nuevo color "naranja" al array. 
 4. Muestra todos los elementos del array usando un bucle for.  -->
 <?php
+
+use function PHPSTORM_META\elementType;
+
 $colores = array("rojo","verde","asul","amarillo");
 echo "<br>";
 echo "<br>";
@@ -167,7 +170,184 @@ var_dump($nombres);
 4. Usa la función array_pop() para eliminar el último elemento del array y 
 muestra el array actualizado. -->
 
+<?php
+echo "<br> <br>";
+$paises = array("España","Francia","Italia","Alemania","Portugal");
+// usamos el metodo para eliminar una array una posición que se le ordene
+unset($paises[2]);
+echo "Array sin Italia";
+echo "<br> <br>";
+var_dump($paises);
+echo "<br> <br>";
+// Para borrar el último elemento del array usamos el método pop
+array_pop($paises);
+echo "<br> <br>";
+echo "Array sin el último elemento";
+var_dump($paises);
+?>
+
+<!-- • Objetivo: Practicar la búsqueda de valores en un array. 
+• Descripción: 
+1. Crea un array numérico llamado $edades con los valores 20, 30, 40, 25, 
+35. 
+2. Usa la función array_search() para encontrar la posición de la edad 25 
+en el array. 
+3. Si el valor existe, muestra la posición, de lo contrario muestra un 
+mensaje indicando que no se encontró.  -->
+<?php
+echo "<br> <br>";
+$edades = array(20,30,40,25,35);
+// recorre el array en busca de un caracter que se le indique
+$posicion  = array_search(25,$edades);
+if($posicion != false){
+    echo "La posición de la edad 25 es: ". $posicion +1;
+}else{
+    echo "No se encontró la edad 25 en el array";
+}
+?>
+
+<!-- • Objetivo: Implementar un algoritmo para encontrar el valor máximo y mínimo 
+de un array sin usar las funciones integradas de PHP. 
+• Descripción: 
+1. Crea un array numérico con al menos 5 elementos. 
+2. Escribe un algoritmo que recorra el array y determine el valor máximo y 
+mínimo sin usar max() ni min(). 
+3. Muestra el valor máximo y mínimo.  -->
+
+<?php
+echo "<br> <br>";
+
+$numeros = array(10,20,5,30,15);
+// Inicializamos el máximo y mínimo
+$maximo = $numeros[0];
+$minimo = $numeros[0];
+
+foreach($numeros as $valor){
+    if($valor > $maximo){
+        $maximo = $valor;
+    }
+    if($valor < $minimo){
+        $minimo = $valor;
+    }
+}
+
+echo "El valor maximo es: " . $maximo . "<br>";
+echo "El valor minimo es: " . $minimo . "<br>";
+?>
+
+<!-- Ejercicio 10: Contar las Vocales en una Cadena 
+• Objetivo: Practicar el uso de bucles, operadores lógicos y funciones para 
+manejar cadenas. 
+• Descripción: 
+1. Solicita una cadena de texto al usuario. 
+2. Escribe un algoritmo que cuente cuántas vocales hay en la cadena. -->
+
+<?php
+echo "<br> <br>";
+$cadena = "Lorem Ipsum es un texto de marcador de posicion utilizado comunmente en diseño grafico y tipografia";
+function contarVocales($cadena){
+    $vocales = array("a","e","i","o","u","A","E","I","O","U");
+    $contador = 0;
+
+    // usamo el split para poder convertirlo en array y podamos recorrerlo posteriormente con un foreach
+    $cadenaVocales = str_split($cadena);
+    foreach($cadenaVocales as $valor){
+        if(in_array($valor,$vocales)){
+            $contador++;
+        }
+    }
+    return $contador;
+}
+$numeroVocales = contarVocales($cadena);
+echo "El numero de vocales en la cadena es: ". $numeroVocales;
+?>
+
+<!-- • Objetivo: Practicar el uso de arrays, bucles y operadores aritméticos. 
+• Descripción: 
+1. Crea un array de números con al menos 5 elementos. 
+2. Escribe un algoritmo que calcule el promedio de los números en el array. 
+3. Muestra el promedio.  -->
+<?php
+$numeros = array(10,20,35,48,62);
+function calcularPromedio($numeros){
+    $suma = 0;
+    foreach($numeros as $numero){
+        $suma += $numero;
+    }
+    $promedio = $suma /count($numeros);
+    return $promedio;
+}
+$promedio = calcularPromedio($numeros);
+echo "<br> <br>";
+echo "El promedio de los números en el array es: " . $promedio;
+
+?>
 
 
+
+<!-- • Objetivo: Implementar un algoritmo para calcular la suma de todos los 
+elementos de un array. 
+• Descripción: 
+1. Crea un array numérico con al menos 5 elementos. 
+2. Escribe un algoritmo que recorra el array y sume todos los elementos. 
+3. Muestra el resultado de la suma.  -->
+<?php
+$numeros = array(1,2,3,4,5);
+$suma=0;
+foreach($numeros as $numero){
+    $suma+=$numero;
+}
+echo "<br> <br>";
+
+echo "La suma de los números en el array es: " . $suma;
+
+
+?>
+
+<!-- • Objetivo: Implementar un algoritmo para eliminar elementos duplicados de un 
+array sin usar array_unique(). 
+• Descripción: 
+1. Crea un array con algunos elementos duplicados. 
+2. Escribe un algoritmo que elimine los duplicados manteniendo solo la 
+primera aparición de cada elemento. 
+3. Muestra el array sin duplicados.  -->
+
+<?php
+$duplicados = array(2, 2, 8, 5, 3, 8, 1, 2, 5, 7, 3, 4, 6, 1);
+$unicos = array();
+foreach($duplicados as $duplicado){
+    if(!in_array($duplicado,$unicos)){
+        array_push($unicos,$duplicado);
+    }
+}
+echo "<br> <br>";
+
+var_dump($unicos);
+?>
+
+
+
+<!-- 
+• Objetivo: Implementar un algoritmo para contar cuántas veces aparece cada 
+elemento en un array. 
+• Descripción: 
+1. Crea un array con algunos elementos repetidos. 
+2. Escribe un algoritmo que cuente la frecuencia de cada elemento. 
+3. Muestra el número de veces que aparece cada elemento.  -->
+
+<?php
+$frecuencias = array(2, 2, 6, 1, 2, 6, 1, 6, 7, 1);
+$frecuencia = array();
+foreach($frecuencias as $elemento){
+    if(isset($frecuencia[$elemento])){
+        $frecuencia[$elemento]++;
+    }else{
+        $frecuencia[$elemento] = 1;
+    }
+}
+echo "<br><br>";
+foreach($frecuencia as $elemento =>$repetir){
+    echo "El elemento $elemento aparece $repetir veces.<br>";}
+?>
 
 
