@@ -13,8 +13,8 @@ if (isset($_POST['enviar'])){
         echo "Hay errores en el formulario";
 ?>
 <form action="" method="post">
-        Nombre: <input type="text" name="nombre"><?php if(empty($_POST['nombre'])) echo "<span style = color:red>El nombre no debe de estar en blanco</span>"?><br><br>
-        Apellidos: <input type="text" name="apell"><?php if(empty($_POST['apell'])) echo "<span style = color:red>Los apellidos no deben de estar en blanco</span>"?>
+        Nombre: <input type="text" name="nombre" value="<?php if(empty($_POST['nombre'])) echo $_POST['nombre'];?>"> <?php echo "<span style = color:red>El nombre no debe de estar en blanco</span>"?><br><br>
+        Apellidos: <input type="text" name="apell" value="<?php if(empty($_POST['apell'])) echo $_POST['apell'];?>"><?php echo "<span style = color:red>Los apellidos no deben de estar en blanco</span>"?>
         <br><br>
         modulos:<?php if(empty($_POST['modulos'])) echo "<span style = color:red>Tienes que elegir al menos un modulo</span>"?><br>
         <input type="checkbox" name="modulos[]" value="DWES">Desarrollo web entorno servidor <br><br>
