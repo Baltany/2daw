@@ -1,5 +1,3 @@
-<!-- Formulario hecho con la segunda estructura proporcionada por el profesor mirar estructura en imagenes -->
-
 <?php
 if (isset($_POST['enviar'])){
     if(!empty($_POST['nombre']) && !empty($_POST['apell']) && !empty($_POST['modulos'])){
