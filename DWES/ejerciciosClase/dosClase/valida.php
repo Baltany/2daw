@@ -16,10 +16,10 @@ if (isset($_POST['enviar'])){
         Nombre: <input type="text" name="nombre" value="<?php if(empty($_POST['nombre'])) echo $_POST['nombre'];?>"> <?php echo "<span style = color:red>El nombre no debe de estar en blanco</span>"?><br><br>
         Apellidos: <input type="text" name="apell" value="<?php if(empty($_POST['apell'])) echo $_POST['apell'];?>"><?php echo "<span style = color:red>Los apellidos no deben de estar en blanco</span>"?>
         <br><br>
-        modulos:<?php if(empty($_POST['modulos'])) echo "<span style = color:red>Tienes que elegir al menos un modulo</span>"?><br>
-        <input type="checkbox" name="modulos[]" value="DWES">Desarrollo web entorno servidor <br><br>
-        <input type="checkbox" name="modulos[]" value="DWEC"> Desarrollo web entorno cliente<br><br>
-        <input type="checkbox" name="modulos[]" value="DIW">Desarrollo interfaces web <br><br>
+        modulos:<?php if(empty($_POST['modulos'])) echo "<span style = color:red>Tienes que el  egir al menos un modulo</span>"?><br>
+        <input type="checkbox" name="modulos[]" value="DWES" <?php if(isset($_POST['modulos']) && in_array("DWES",$_POST['modulos'])) echo "checked";?>>Desarrollo web entorno servidor <br><br>
+        <input type="checkbox" name="modulos[]" value="DWEC" <?php if(isset($_POST['modulos']) &&  in_array("DWEC",$_POST['modulos'])) echo "checked";?>> Desarrollo web entorno cliente<br><br>
+        <input type="checkbox" name="modulos[]" value="DIW" <?php if(isset($_POST['modulos']) &&  in_array("DIW",$_POST['modulos'])) echo "checked";?>>Desarrollo interfaces web <br><br>
         <input type="submit" name="enviar" value="Enviar">
     </form>
 <?php
@@ -32,9 +32,9 @@ if (isset($_POST['enviar'])){
         <br><br>
         modulos:
         <br>
-        <input type="checkbox" name="modulos[]" value="DWES">Desarrollo web entorno servidor <br><br>
-        <input type="checkbox" name="modulos[]" value="DWEC"> Desarrollo web entorno cliente<br><br>
-        <input type="checkbox" name="modulos[]" value="DIW">Desarrollo interfaces web <br><br>
+        <input type="checkbox" name="modulos[]" value="DWES" >Desarrollo web entorno servidor <br><br>
+        <input type="checkbox" name="modulos[]" value="DWEC" > Desarrollo web entorno cliente<br><br>
+        <input type="checkbox" name="modulos[]" value="DIW" >Desarrollo interfaces web <br><br>
         <input type="submit" name="enviar" value="Enviar">
     </form>
 <?php
