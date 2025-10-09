@@ -1,56 +1,64 @@
-<!-- Hecho en clase -->
 <?php
+// Inicializar array de errores
+$errores = array();
+
+// Validar si se envió el formulario
 if(isset($_POST['enviar'])){
     if(empty($_POST['nombre'])){
-        $errores[]= 'nombre';
-
-    }if(empty($_POST['apell'])){
-        $errores[]= 'apell';
-
-    }if(empty($_POST['modulos'])){
-        $errores[]= 'modulos';
-
+        $errores[] = 'nombre';
     }
-
+    if(empty($_POST['apell'])){
+        $errores[] = 'apell';
+    }
+    if(empty($_POST['modulos'])){
+        $errores[] = 'modulos';
+    }
 }
+
+// Si no hay errores, mostrar los datos
 if(isset($_POST['enviar']) && empty($errores)){
-    echo $_POST['nombre']. " | " . $_POST['apell'];
-    foreach($array as $key => $value){
-        echo $value;
+    echo "<h3>Datos recibidos:</h3>";
+    echo "Nombre: " . htmlspecialchars($_POST['nombre']) . "<br>";
+    echo "Apellidos: " . htmlspecialchars($_POST['apell']) . "<br>";
+    echo "Módulos seleccionados:<br>";
+    foreach($_POST['modulos'] as $modulo){
+        echo "- " . htmlspecialchars($modulo) . "<br>";
     }
-
-}else{
-
-
-
-
+    echo "<br><a href=''>Volver al formulario</a>";
+} else {
+    // Mostrar el formulario
 ?>
 
+<form action="" method="post">
+    Nombre: 
+    <input type="text" name="nombre" value="<?php if(isset($_POST['nombre']) && !in_array('nombre', $errores)) echo htmlspecialchars($_POST['nombre']); ?>">
+    <?php if(isset($_POST['enviar']) && in_array('nombre', $errores)) echo '<span style="color:red"> El nombre está vacío </span>'; ?>
+    <br><br>
+    
+    Apellidos: 
+    <input type="text" name="apell" value="<?php if(isset($_POST['apell']) && !in_array('apell', $errores)) echo htmlspecialchars($_POST['apell']); ?>">
+    <?php if(isset($_POST['enviar']) && in_array('apell', $errores)) echo '<span style="color:red"> El apellido está vacío </span>'; ?>
+    <br><br>
+    
+    Módulos:
+    <?php if(isset($_POST['enviar']) && in_array('modulos', $errores)) echo '<span style="color:red"> Los módulos están vacíos </span>'; ?>
+    <br>
+    
+    <input type="checkbox" name="modulos[]" value="DWES" 
+        <?php if(isset($_POST['modulos']) && in_array('DWES', $_POST['modulos'])) echo 'checked'; ?>>
+    Desarrollo web entorno servidor <br>
+    
+    <input type="checkbox" name="modulos[]" value="DWEC" 
+        <?php if(isset($_POST['modulos']) && in_array('DWEC', $_POST['modulos'])) echo 'checked'; ?>>
+    Desarrollo web entorno cliente<br>
+    
+    <input type="checkbox" name="modulos[]" value="DIW" 
+        <?php if(isset($_POST['modulos']) && in_array('DIW', $_POST['modulos'])) echo 'checked'; ?>>
+    Desarrollo interfaces web <br><br>
+    
+    <input type="submit" name="enviar" value="Enviar">
+</form>
 
 <?php
-
+}
 ?>
-<form action="" method="post">
-        Nombre: <input type="text" name="nombre" value="<?php if(empty($_POST['enviar']) && !in_array('nombre',$errores)) echo $_POST['nombre'];?>"><?php if(isset($_POST['enviar']) && in_array('nombre',$errores)) echo '<span style=color:red> El nombre está vacío </span> '; ?><br><br>
-        Apellidos: <input type="text" name="apell" value="<?php if(empty($_POST['enviar']) && !in_array('apell',$errores)) echo $_POST['apell'];?>"><?php if(isset($_POST['enviar']) && in_array('apell',$errores)) echo '<span style=color:red> El apellido está vacío </span> '; ?><br><br>
-        modulos:<?php if(isset($_POST['enviar']) && in_array('modulos',$errores)) echo '<span style=color:red> Los modulos estan vacios </span> '; ?><br>
-        <input type="checkbox" name="modulos[]" value="DWES" <?php if(empty($_POST['enviar']) && !in_array('modulos',$errores)) echo 'checked';?>>Desarrollo web entorno servidor <br><br>
-        <input type="checkbox" name="modulos[]" value="DWEC" <?php if(empty($_POST['enviar']) && !in_array('modulos',$errores)) echo 'checked';?>> Desarrollo web entorno cliente<br><br>
-        <input type="checkbox" name="modulos[]" value="DIW" <?php if(empty($_POST['enviar']) && !in_array('modulos',$errores)) echo 'checked';?>>Desarrollo interfaces web <br><br>
-        <input type="submit" name="enviar" value="Enviar">
-    </form>
-<?php
-    }
-
-?>
-<form action="" method="post">
-        Nombre: <input type="text" name="nombre"><br><br>
-        Apellidos: <input type="text" name="apell">
-        <br><br>
-        modulos:
-        <br>
-        <input type="checkbox" name="modulos[]" value="DWES" >Desarrollo web entorno servidor <br><br>
-        <input type="checkbox" name="modulos[]" value="DWEC" > Desarrollo web entorno cliente<br><br>
-        <input type="checkbox" name="modulos[]" value="DIW" >Desarrollo interfaces web <br><br>
-        <input type="submit" name="enviar" value="Enviar">
-    </form>
