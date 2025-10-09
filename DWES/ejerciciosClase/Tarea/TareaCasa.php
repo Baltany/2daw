@@ -1,5 +1,5 @@
 <?php
-// Inicializar array de errores
+// Inicializar array de donde se muestran los errores
 $errores = array();
 
 // Validar si se envió el formulario
@@ -18,25 +18,25 @@ if(isset($_POST['enviar'])){
 // Si no hay errores, mostrar los datos
 if(isset($_POST['enviar']) && empty($errores)){
     echo "<h3>Datos recibidos:</h3>";
-    echo "Nombre: " . htmlspecialchars($_POST['nombre']) . "<br>";
-    echo "Apellidos: " . htmlspecialchars($_POST['apell']) . "<br>";
+    echo "Nombre: " . $_POST['nombre'] . "<br>";
+    echo "Apellidos: " . $_POST['apell'] . "<br>";
     echo "Módulos seleccionados:<br>";
     foreach($_POST['modulos'] as $modulo){
-        echo "- " . htmlspecialchars($modulo) . "<br>";
+        echo "- " . $modulo . "<br>";
     }
     echo "<br><a href=''>Volver al formulario</a>";
 } else {
-    // Mostrar el formulario
+    // Mostramos el formulario
 ?>
 
 <form action="" method="post">
     Nombre: 
-    <input type="text" name="nombre" value="<?php if(isset($_POST['nombre']) && !in_array('nombre', $errores)) echo htmlspecialchars($_POST['nombre']); ?>">
+    <input type="text" name="nombre" value="<?php if(isset($_POST['nombre']) && !in_array('nombre', $errores)) echo $_POST['nombre']; ?>">
     <?php if(isset($_POST['enviar']) && in_array('nombre', $errores)) echo '<span style="color:red"> El nombre está vacío </span>'; ?>
     <br><br>
     
     Apellidos: 
-    <input type="text" name="apell" value="<?php if(isset($_POST['apell']) && !in_array('apell', $errores)) echo htmlspecialchars($_POST['apell']); ?>">
+    <input type="text" name="apell" value="<?php if(isset($_POST['apell']) && !in_array('apell', $errores)) echo $_POST['apell']; ?>">
     <?php if(isset($_POST['enviar']) && in_array('apell', $errores)) echo '<span style="color:red"> El apellido está vacío </span>'; ?>
     <br><br>
     
