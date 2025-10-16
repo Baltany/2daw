@@ -2,7 +2,7 @@
 require_once 'funciones.php';
 $f = false;
 $c = false;
-$d = false;
+$d = true;
 // hacer un header para proteger las rutas y el usuario que quiera ver la matriz sino ha metido valores antes no pueda entrar o sea redirigido
 if(isset($_POST['calcula'])){
     if(!empty($_POST['filas']) && is_numeric($_POST['filas']) && $_POST['filas'] > 0){
@@ -21,14 +21,19 @@ if(isset($_POST['calcula']) && $f && $c && $d){
     mostrarMatriz($matriz);
     switch($_GET['opc']){
         case 1:
-            echo "Suma fila";
+            echo "Suma fila <br>";
             $sumaFinal = sumarFilas($matriz);
             foreach($sumaFinal as $ind=>$value){
                 echo "La suma de la fila ". $ind . " es de:". $value . "<br>";
             }
             break;
         case 2:
-            echo "Suma columnas";
+            echo "Suma columnas <br>";
+            $sumaFinal = sumarColumnas($matriz);
+            foreach($sumaFinal as $ind=>$value){
+                echo "La suma de la columna ". $ind . " es de:". $value . "<br>";
+            }
+
             break;
 
         case 3:
