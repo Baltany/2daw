@@ -37,10 +37,33 @@ if(isset($_POST['calcula']) && $f && $c && $d){
             break;
 
         case 3:
+            echo "Suma filas y columnas <br>";
+            echo "Suma TOTAL de todas las filas <br>";
+            $sumaFilas = sumarFilas($matriz);
+            // sumamos el array filas que contiene todas las filas de la matriz
+            $totalFilas = array_sum($sumaFilas);
+            echo "Total: <b>" . $totalFilas . "</b><br><br>";
+
+            // lo mismo con las col
+            echo "Suma TOTAL de todas las columnas <br>";
+            $sumaCol = sumarColumnas($matriz);
+            $totalCol = array_sum($sumaCol);
+            echo "Total: <b>" . $totalCol . "</b><br><br>";
+
             break;
 
         case 4:
-            echo "Diagonal";
+            echo "Diagonal <br>";
+            $sumaDiagonal = sumarDiagonal($matriz);
+            echo "La suma de la diagonal es: <b>". $sumaDiagonal . "</b> ";
+            break;
+
+        case 5:
+            echo "Traspuesta <br>";
+            $traspuesta = matrizTraspuesta($matriz);
+            echo "<br>";
+            mostrarMatriz($traspuesta);
+
             break;
 
 
