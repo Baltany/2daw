@@ -12,8 +12,8 @@ if(isset($_POST['calcula'])){
         $c = true;
     }
     // Tiene que ser cuadrada para que exista diagonal
-    if($_GET['opc'] == 4 && $_POST['filas'] == $_POST['col']){
-        $c = true;
+    if($_GET['opc'] == 4 && $_POST['filas'] != $_POST['col']){
+        $d = false;
     }
 }
 if(isset($_POST['calcula']) && $f && $c && $d){
@@ -79,7 +79,12 @@ if(isset($_POST['calcula']) && $f && $c && $d){
     <?php if(!$f && isset($_POST['calcula'])) echo "<span style = color:red>La fila no puede estar vacía ni debe ser negativo </span> <br>";?>
     Número de columnas <input type="text" name="col"><br>
     <?php if(!$c && isset($_POST['calcula'])) echo "<span style = color:red>La columna no puede estar vacía ni debe ser negativo </span><br>";?>
-    <?php if(! $d) ?>
+    <?php 
+    // Mensaje de error si es diagonal y no es cuadrada
+    if(!$d && isset($_POST['calcula'])) 
+        echo "<span style='color:red'>Para calcular la diagonal, la matriz debe ser cuadrada (mismo número de filas y columnas)</span><br>";
+    ?>
+
     <input type="submit" name="calcula" value="calcula">
 
 </form>
