@@ -1,0 +1,162 @@
+<!-- Crea una app que añada una persona a la tabla de datos 
+y que cuando le de a buscar la persona la muestre si existe el registro
+sino que de un mensaje de error -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Idiomas | Balbino</title>
+</head>
+<body>
+    <?php
+    $error = false;
+    $msg = "";
+    
+    try {
+        $connection = new mysqli("localhost", "dwes", "abc123.", "empleados");
+        $connection->set_charset("utf8mb4");
+    } catch (mysqli_sql_exception $e) {
+        $error = true;
+        $msg = "Error de conexión con la base de datos";
+    }
+    ?>
+    
+
+        <h1>Ejercicio: Gestión de Empleados e Idiomas</h1>
+        <?php if (!$error) { ?>
+        <form action="" method="post">
+            DNI: <input type="text" name="dni" value="<?php echo isset($_POST['dni']) ? $_POST['dni'] : ''; ?>" required> <br><br>
+
+            Nombre: <input type="text" name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : ''; ?>"> <br><br>
+
+            Apellidos: <input type="text" name="apellidos" value="<?php echo isset($_POST['apellidos']) ? $_POST['apellidos'] : ''; ?>"> <br><br>
+
+            Salario: <input type="number" step="0.01" name="salario" value="<?php echo isset($_POST['salario']) ? $_POST['salario'] : ''; ?>"> <br><br>
+
+            Idiomas: 
+            <input type="checkbox" name="idiomas[]" value="Ingles" <?php echo (isset($_POST['idiomas']) && in_array('Ingles', $_POST['idiomas'])) ? 'checked' : ''; ?>>Inglés
+            <input type="checkbox" name="idiomas[]" value="Frances" <?php echo (isset($_POST['idiomas']) && in_array('Frances', $_POST['idiomas'])) ? 'checked' : ''; ?>>Francés
+            <input type="checkbox" name="idiomas[]" value="Aleman" <?php echo (isset($_POST['idiomas']) && in_array('Aleman', $_POST['idiomas'])) ? 'checked' : ''; ?>>Alemán
+            <input type="checkbox" name="idiomas[]" value="Chino" <?php echo (isset($_POST['idiomas']) && in_array('Chino', $_POST['idiomas'])) ? 'checked' : ''; ?>>Chino
+            <input type="checkbox" name="idiomas[]" value="Portugues" <?php echo (isset($_POST['idiomas']) && in_array('Portugues', $_POST['idiomas'])) ? 'checked' : ''; ?>>Portugués
+            <br><br>
+
+            <input type="submit" name="annadir" value="Añadir">
+            <input type="submit" name="buscar" value="Buscar">
+        </form>
+
+        <?php
+        // BOTÓN AÑADIR
+        if (isset($_POST['annadir']) && !empty($_POST['dni'])) {
+            try {
+                // recogemos el valor de los inputs
+                $dni = $_POST['dni'];
+                $nombre = $_POST['nombre'];
+                $apellidos = $_POST['apellidos'];
+                $salario = $_POST['salario'];
+                $idiomas = isset($_POST['idiomas']) ? $_POST['idiomas'] : [];
+                
+                // Validar que se hayan seleccionado idiomas
+                if (empty($idiomas)) {
+                    echo "<p style='color:red'>Debes seleccionar al menos un idioma.</p>";
+                } else {
+                    $connection->autocommit(false);
+                    
+                    // Insertar datos personales
+                    $sql_datos = "INSERT INTO datos(dni, nombre, apellidos, salario) VALUES(?, ?, ?, ?)";
+                    $stmt_datos = $connection->prepare($sql_datos);
+                    $stmt_datos->bind_param("sssi", $dni, $nombre, $apellidos, $salario);
+                    $stmt_datos->execute();
+                    $stmt_datos->close();
+                    
+                    // Insertar idiomas
+                    $sql_idiomas = "INSERT INTO idiomas(dni, idioma) VALUES(?, ?)";
+                    $stmt_idiomas = $connection->prepare($sql_idiomas);
+                    
+                    foreach ($idiomas as $idioma) {
+                        $stmt_idiomas->bind_param("ss", $dni, $idioma);
+                        $stmt_idiomas->execute();
+                    }
+                    $stmt_idiomas->close();
+                    
+                    $connection->commit();
+                    echo "<p style='color:green'>Empleado añadido correctamente.</p>";
+                }
+                
+            } catch (mysqli_sql_exception $e) {
+                $connection->rollback();
+                echo "<p style='color:red'>Error al añadir el empleado: " . $e->getMessage() . "</p>";
+            }
+        } elseif (isset($_POST['annadir'])) {
+            echo "<p>Por favor, introduce un DNI.</p>";
+        }
+        
+        // BOTÓN BUSCAR
+        if (isset($_POST['buscar']) && !empty($_POST['dni'])) {
+            try {
+                $dni = $_POST['dni'];
+                
+                // Buscar datos del empleado
+                $sql_buscar = "SELECT d.dni, d.nombre, d.apellidos, d.salario 
+                              FROM datos d 
+                              WHERE d.dni = ?";
+                $stmt_buscar = $connection->prepare($sql_buscar);
+                $stmt_buscar->bind_param("s", $dni);
+                $stmt_buscar->execute();
+                $result = $stmt_buscar->get_result();
+                
+                if ($result->num_rows > 0) {
+                    $empleado = $result->fetch_assoc();
+                    
+                    echo "<h2>Datos del Empleado</h2>";
+                    echo "<p><strong>DNI:</strong> {$empleado['dni']}</p>";
+                    echo "<p><strong>Nombre:</strong> {$empleado['nombre']}</p>";
+                    echo "<p><strong>Apellidos:</strong> {$empleado['apellidos']}</p>";
+                    echo "<p><strong>Salario:</strong> {$empleado['salario']}€</p>";
+                    
+                    // Buscar idiomas del empleado
+                    $sql_idiomas = "SELECT idioma FROM idiomas WHERE dni = ?";
+                    $stmt_idiomas = $connection->prepare($sql_idiomas);
+                    $stmt_idiomas->bind_param("s", $dni);
+                    $stmt_idiomas->execute();
+                    $result_idiomas = $stmt_idiomas->get_result();
+                    
+                    if ($result_idiomas->num_rows > 0) {
+                        echo "<p><strong>Idiomas:</strong> ";
+                        $idiomas_list = [];
+                        while ($row = $result_idiomas->fetch_assoc()) {
+                            $idiomas_list[] = $row['idioma'];
+                        }
+                        echo implode(", ", $idiomas_list);
+                        echo "</p>";
+                    } else {
+                        echo "<p><strong>Idiomas:</strong> No tiene idiomas registrados</p>";
+                    }
+                    
+                    $stmt_idiomas->close();
+                } else {
+                    echo "<p style='color:red'>No se ha encontrado ningún empleado con el DNI: $dni</p>";
+                }
+                
+                $stmt_buscar->close();
+                
+            } catch (mysqli_sql_exception $e) {
+                echo "<p style='color:red'>Error al buscar el empleado: " . $e->getMessage() . "</p>";
+            }
+        } elseif (isset($_POST['buscar'])) {
+            echo "<p>Por favor, introduce un DNI para buscar.</p>";
+        }
+        
+        if (isset($connection)) {
+            $connection->close();
+        }
+        ?>
+
+    <?php
+    }
+    ?>
+    
+
+</body>
+</html>
