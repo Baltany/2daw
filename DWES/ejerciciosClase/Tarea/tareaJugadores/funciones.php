@@ -18,6 +18,7 @@ function addJugador($nombre, $dni, $dorsal, $posicion, $equipo, $goles){
     
     // Si posicion es un array, convertirlo a string
     if(is_array($posicion)){
+        // la funcion implode convierte a string con un separador que nosotros usemos en este caso ','  
         $posicion = implode(',', $posicion);
     }
     
@@ -63,6 +64,7 @@ function buscarJugador($campo, $valor){
     
     $sql = "SELECT * FROM jugadores WHERE $campo LIKE ?";
     $stmt = $connection->prepare($sql);
+    // usamos '%' tanto al principio como al final porque queremos que contenga esa palabra
     $valor_busqueda = "%$valor%";
     $stmt->bind_param("s", $valor_busqueda);
     $stmt->execute();
@@ -87,6 +89,7 @@ function modificarJugador($dni, $nombre, $dorsal, $posicion, $equipo, $goles){
     
     // Si posicion es un array, convertirlo a string
     if(is_array($posicion)){
+            // la funcion implode convierte a string con un separador que nosotros usemos en este caso ','  
         $posicion = implode(',', $posicion);
     }
     
