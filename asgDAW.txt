@@ -4,6 +4,12 @@ DWES desarrollo web entorno servidor 8h
 HLC horas libre configuración 3h
 DWEC desarrollo web entorno cliente 6h
 
+DWES:
+hacer que las paginas sino estas registrado ni logueado que no puedas avanzar es decir que rediriga del index a la ventana de logueo por ejemplo,
+obviamete todos los requisitos con regex y campos vacios mostrar errores y probar todas las posibles patrones de errores para poder controlarlo el tipico <?php echo $errores?> 
+en cada input.Cookies recuerdame ponerle tiempo
+
+
 
 proyecto juntando hlc y dwec con springboot y angular
 
