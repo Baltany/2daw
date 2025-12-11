@@ -33,16 +33,16 @@ $cuentas = CuentaController::obtenerPorDni($dni);
 <?php
 if($cuentas){
     echo "<table border='1'>";
-    echo "<tr><th>IBAN</th><th>Saldo</th></tr>";
+    echo "<tr><th>IBAN</th><th>Saldo</th><th>Acciones</th></tr>";
 
     foreach($cuentas as $c){
         echo "<tr>";
         echo "<td>" . $c->iban . "</td>";
         echo "<td>" . $c->saldo . " €</td>";
-        echo "</tr>";
+        echo "<td> <a href='transferencias.php?iban=" . $c->iban . "'>Transferencia</a> <a href='validar_transferencia.php'>Historial</a> </td>";        echo "</tr>";
     }
 
-    echo "</table>";
+    echo "</table><br>";
 }else{
     echo "<p>No tienes cuentas registradas.</p>";
 }
@@ -50,7 +50,6 @@ if($cuentas){
 
 <hr>
 
-<a href="transferencias.php">Realizar Transferencia</a>
 
 </body>
 </html>
