@@ -1,0 +1,9 @@
+<?php
+session_start();
+setcookie("usuario_id","",time()-3600,"/");
+setcookie("usuario_nombre","",time()-3600,"/");
+setcookie("usuario_apellidos","",time()-3600,"/");
+setcookie("usuario_dni","",time()-3600,"/");
+session_destroy();
+header("Location:index.php");
+?>
