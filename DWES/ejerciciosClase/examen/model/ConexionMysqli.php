@@ -1,5 +1,4 @@
 <?php
-// modelos/Conexion.php
 class ConexionMysqli extends mysqli{
     private $host = "localhost";
     private $usu = "dwes";

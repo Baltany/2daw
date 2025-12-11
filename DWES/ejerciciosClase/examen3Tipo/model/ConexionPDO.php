@@ -3,7 +3,7 @@ class ConexionPDO{
     private $host = "localhost";
     private $usu = "dwes";
     private $pass = "abc123.";
-    private $bd = "sistema_usuarios";
+    private $bd = "sistema_usuarios3";
     private $conexion;
     
     public function __construct(){

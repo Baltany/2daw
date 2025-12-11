@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../model/ConexionMysqli.php';
-require_once __DIR__ . '/../model/Usuario.php';
+require_once '../model/ConexionMysqli.php';
+require_once '../model/Usuario.php';
 
 class UsuarioController{
     public static function insertar($u){
