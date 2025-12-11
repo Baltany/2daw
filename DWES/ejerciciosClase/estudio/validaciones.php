@@ -2,6 +2,8 @@
 // Validaciones.php
 
 class Validaciones {
+    // validar iban
+    $iban ='/^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$/';
     
     // Validar que no esté vacío
     public static function noVacio($campo) {
