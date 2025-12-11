@@ -1,13 +1,27 @@
 <?php
 session_start();
-if(!isset($_COOKIE['usuario_id'])){
-    header("Location:login.php");
+
+// Verificar si la cookie existe y tiene un valor válido
+if(!isset($_COOKIE['usuario_id']) || empty($_COOKIE['usuario_id'])){
+    header("Location: login.php");
+    exit();
 }
 
-require_once 'model/Usuario.php';
-require_once 'controller/UsuarioController.php';
+require_once '../model/Usuario.php';
+require_once '../controller/UsuarioController.php';
 
-$usuario=usuarioController::buscarPorId($_COOKIE['usuario_id']);
+$usuario = UsuarioController::buscarPorId($_COOKIE['usuario_id']);
+
+// Verificar que el usuario existe
+if(!$usuario){
+    // Si no se encuentra el usuario, limpiar cookies y redirigir al login
+    setcookie("usuario_id", "", time()-3600, "/");
+    setcookie("usuario_nombre", "", time()-3600, "/");
+    setcookie("usuario_apellidos", "", time()-3600, "/");
+    setcookie("usuario_dni", "", time()-3600, "/");
+    header("Location: login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,7 +32,7 @@ $usuario=usuarioController::buscarPorId($_COOKIE['usuario_id']);
 <body>
     <h1>Panel de Usuario</h1>
     
-    <p>Bienvenido/a: <?php echo $usuario->nombre.' '.$usuario->apellidos; ?></p>
+    <p>Bienvenido/a: <?php echo $usuario->nombre . ' ' . $usuario->apellidos; ?></p>
     
     <a href="logout.php">Cerrar Sesión</a> | <a href="items.php">Gestionar Items</a>
     
@@ -57,7 +71,7 @@ $usuario=usuarioController::buscarPorId($_COOKIE['usuario_id']);
         </tr>
         <tr>
             <td>Edad</td>
-            <td><?php echo $usuario->edad ? $usuario->edad.' años' : 'No especificada'; ?></td>
+            <td><?php echo $usuario->edad ? $usuario->edad . ' años' : 'No especificada'; ?></td>
         </tr>
         <tr>
             <td>Estado Civil</td>
@@ -73,7 +87,7 @@ $usuario=usuarioController::buscarPorId($_COOKIE['usuario_id']);
         </tr>
         <tr>
             <td>Fecha de Registro</td>
-            <td><?php echo date('d/m/Y H:i',strtotime($usuario->fecha_registro)); ?></td>
+            <td><?php echo date('d/m/Y H:i', strtotime($usuario->fecha_registro)); ?></td>
         </tr>
     </table>
 </body>
