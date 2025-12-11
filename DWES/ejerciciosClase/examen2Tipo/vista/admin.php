@@ -79,6 +79,8 @@ $usuarios = UsuarioController::obtenerTodos();
                         <?php else: ?>
                             <em>Tu cuenta</em>
                         <?php endif; ?>
+                        <a href="editar_usuario.php?id=<?php echo $u->id; ?>">Editar</a>
+
                     </td>
                 </tr>
             <?php endforeach; ?>

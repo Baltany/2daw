@@ -16,6 +16,39 @@ class UsuarioController{
         }
     }
     
+    public static function actualizar($u){
+        try{
+            $conex = new ConexionMysqli();
+
+            $sql = "
+                UPDATE usuarios SET 
+                    dni='$u->dni',
+                    nombre='$u->nombre',
+                    apellidos='$u->apellidos',
+                    email='$u->email',
+                    provincia='$u->provincia',
+                    sexo='$u->sexo',
+                    edad='$u->edad',
+                    estado_civil='$u->estado_civil',
+                    aficiones='$u->aficiones',
+                    estudios='$u->estudios',
+                    tipo='$u->tipo'
+                WHERE id=$u->id
+            ";
+
+            $conex->query($sql);
+
+            $filas = $conex->affected_rows;
+
+            $conex->close();
+            return $filas;
+
+        } catch(Exception $ex){
+            echo "<a href='../view/admin.php'>Ir a admin</a>";
+            die("ERROR CON LA BD: " . $ex->getMessage());
+        }
+    }
+
     public static function buscarPorEmail($email){
         try{
             $conex=new ConexionMysqli();

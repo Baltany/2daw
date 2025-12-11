@@ -1,3 +1,4 @@
+            $filas = $conex->affected_rows;
 <?php
 session_start();
 

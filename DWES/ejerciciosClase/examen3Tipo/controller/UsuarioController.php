@@ -37,6 +37,7 @@ class UsuarioController{
     }
     
 
+    //referencia del objeto siempre
     public static function actualizar($u){
         try{
             $conex = new ConexionPDO();
