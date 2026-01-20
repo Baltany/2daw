@@ -122,4 +122,16 @@ class Validaciones {
         return preg_match($patronActual, $matricula) || preg_match($patronAntiguo, $matricula);
     }
 
+
+
+
+    // DNI
+preg_match('/^[0-9]{8}[A-Z]$/', $dni)
+
+// Matrícula
+preg_match('/^[0-9]{4}[A-Z]{3}$/', $matricula)
+
+// Teléfono
+preg_match('/^[0-9]{9}$/', $telf)
+
 }

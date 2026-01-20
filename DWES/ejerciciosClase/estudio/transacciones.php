@@ -67,4 +67,15 @@ public static function alquilarSinTransaccion($cod_juego, $dni_cliente){
         die("ERROR: " . $ex->getMessage());
     }
 }
+
+// SUBIR IMAGENES
+if($_FILES['foto']['error'] == 0) {
+    $extension = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
+    
+    if($extension == 'jpg') {
+        $nombre = time() . "_" . $variable . ".jpg";
+        $ruta = "../../imagenes/" . $nombre;
+        move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
+    }
+}
 ?>

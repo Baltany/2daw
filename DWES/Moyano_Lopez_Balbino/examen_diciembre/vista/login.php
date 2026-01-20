@@ -36,21 +36,24 @@ if(isset($_POST['entrar'])){
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
+
 <body>
     <h1>Iniciar Sesión - Taller Mecánico</h1>
 
     <form action="" method="POST">
         Código: <input type="text" name="codigo" required><br>
         <?php if(isset($error_codigo)) echo "<span style='color:red;'>$error_codigo</span><br>"; ?>
-        
+
         Contraseña: <input type="password" name="clave" required><br>
         <?php if(isset($error_pass)) echo "<span style='color:red;'>$error_pass</span><br>"; ?>
-        
+
         <input type="submit" name="entrar" value="Entrar"><br>
     </form>
 </body>
+
 </html>

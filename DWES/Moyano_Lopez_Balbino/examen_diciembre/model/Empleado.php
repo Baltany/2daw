@@ -16,7 +16,7 @@ class Empleado{
 
     }
 
-        public function __get(string $name): mixed {
+    public function __get(string $name): mixed {
         return $this->$name;
     }
     
